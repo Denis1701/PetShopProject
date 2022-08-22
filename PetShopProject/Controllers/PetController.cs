@@ -44,8 +44,14 @@ namespace PetShopProject.Controllers
         [HttpPost]
         public IActionResult AddAnimal(Animal newAnimal)
         {
+            if(ModelState.IsValid)
+            {
             _service.AddAnimal(newAnimal);
             return RedirectToAction("Index","Catalog", new {id = newAnimal.CategoryId});
+            }
+            ModelState.AddModelError(string.Empty, "Invalid Adding Attempt");
+            ViewBag.Categories = _service.Categories();
+            return View();
         }
         [HttpGet]
         public IActionResult AddCategory()
@@ -75,8 +81,14 @@ namespace PetShopProject.Controllers
         [HttpPost]
         public IActionResult EditAnimalResult(Animal animal)
         {
+            if (ModelState.IsValid)
+            {
             _service.UpdateAnimal(animal);
             return RedirectToAction("Index", "Catalog", new { id = animal.CategoryId });
+            }
+            ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+            ViewBag.Categories = _service.Categories();
+            return View("EditAnimal",animal);
         }
     }
 }

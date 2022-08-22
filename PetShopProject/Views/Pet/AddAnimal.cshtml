@@ -12,6 +12,7 @@
                 </div>
 <form method="post">
             <div class="form-group">
+        <div asp-validation-summary="All" class="text-danger"></div>
                 <label asp-for="Name">Enter Name:</label>
                 <input asp-for="Name" class="form-control"/>
                 <span asp-validation-for="Name" class="text-danger"></span>

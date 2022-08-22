@@ -6,6 +6,7 @@
 <h1>AddCategory</h1>
 <div>
     <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <input type="text" asp-for="Name"/>
         <button type="submit">Add Category</button>
     </form>

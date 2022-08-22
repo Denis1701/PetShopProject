@@ -17,8 +17,8 @@
 </div>
 </div>
 
-
-<div>
+<div class="container">
+    <div class="d-flex flex-column align-items-center col-lg-3">
     <h1>Comments</h1>
     @foreach(var c in @Model.Comments!)
     {
@@ -26,10 +26,12 @@
         <p id="commenter">@c.CommentText</p>
     }
 </div>
-<div>
+    <div class="d-flex flex-column align-items-center col-lg-3">
     <form asp-controller="Pet" asp-action="AddComment" method="post">
         <input id="comment" name="comment" type="text" placeholder="Enter Your Comment"/>
         <input id="animalId" name="animalId" value="@Model.AnimalId" type="hidden"/>
         <button class="submit" type="submit">Add Comment</button>
     </form>
 </div>
+</div>
+
