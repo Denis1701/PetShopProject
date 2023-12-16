@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using PetShopProject.BusinessServices;
@@ -27,9 +28,11 @@ builder.Services.AddControllersWithViews(option =>
     .RequireAuthenticatedUser()
     .Build();
     option.Filters.Add(new AuthorizeFilter(policy));
+    option.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
 });
 var app = builder.Build();
 
+app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseRouting(); 
